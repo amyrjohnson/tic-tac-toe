@@ -2,28 +2,37 @@ require 'Matrix'
 # require './player.rb'
 # require './tic_tac_toe.rb'
 
+class Matrix
+    def []=(i, j, x)
+        @rows[i][j] = x
+     end
+end
+
 class GameBoard
     #board starts empty
     #board updates when players move and keeps track
     #board knows when a player has won
 
     def initialize
-        @board = Matrix[["","",""],["","",""],["","",""]]
+        @board = Matrix.build(3) {0}
         turns = 0
     end
 
     def move(player, position)
         #check if postion is empty
+        puts position.inspect
         puts "board is updating"
-        @board[position[0], position[1]] = player.marker if @board[position[0], position[1]].empty?
+        @board[position[0]][position[1]] = player.marker if @board[position[0]][position[1]] == 0
         turns += 1
     end
 
     def moves
         #list available moves
-        @board.collect do |square|
-            square.empty?
+        moves = []
+        @board.each_with_index do |square, row, col|
+            moves << [row, col] if square == 0
         end
+        moves
     end
 
     def win?

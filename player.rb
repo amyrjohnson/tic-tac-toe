@@ -16,7 +16,7 @@ class Player
     def move(gameboard)
         #choose move from set of available moves 
         #random for now
-        puts "possible moves #{board.moves}"
+        puts "possible moves #{gameboard.moves}"
         puts "player is choosing a move"
         gameboard.moves.sample
 
