@@ -3,7 +3,7 @@
 # require './tic_tac_toe.rb'
 class Player
     #player has marker and order (first or second)
-    attr_accessor :marker, :order, :name
+    attr_accessor :marker, :order, :name, :number
     def initialize(name)
         puts "Making a new player"
         @name = name
